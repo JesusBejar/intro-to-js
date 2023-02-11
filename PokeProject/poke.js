@@ -1,6 +1,7 @@
 const pokemons = [
     {
         name : "charmander", 
+        pic : "charmander.png",
         category : "Fire",
         height : "2 feet",
         weight : "19 pounds",
@@ -8,6 +9,7 @@ const pokemons = [
         description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga a nesciunt optio fugit,quis iste exercitationem voluptates debitis ipsa aliquam?"
     }, {
         name : "squirtle", 
+        pic : "squirtle.png",
         category : "Water",
         height : "1 feet",
         weight : "20 pounds",
@@ -15,6 +17,7 @@ const pokemons = [
         description : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga a nesciunt optio fugit,quis iste exercitationem voluptates debitis ipsa aliquam?"
     }, {
         name : "bulbasaur", 
+        pic : "bulbasaur.png",
         category : "Grass",
         height : "2 feet",
         weight : "15 pounds",
@@ -34,33 +37,43 @@ window.addEventListener("DOMContentLoaded", function(){
     DisplayPokemons(pokemons);
 
 });
- 
+let filteredpokemons = [];
+
 filterButtons.forEach(function (button) {
     button.addEventListener("click", function (e){
         // console.log(e.currentTarget.dataset.id);
+        filteredpokemons = [];
         let category = e.currentTarget.dataset.id;
-        let pokemonCategory = pokemons.filter(function (pokemon) {
-        if (pokemon.category === category){
-            return pokemon;
-        }
+        let pokemonCategory = pokemons.filter( (pokemon) => {
+            // console.log(pokemon.category)
+            // console.log(category)
+            if (pokemon.category === category){
+                filteredpokemons.push(pokemon);
+                }
+            else if (category === "All"){
+                filteredpokemons.push(pokemon);
+            }
+
+        DisplayPokemons(filteredpokemons);
     });
-        // console.log(pokemonCategory);
-        if (category === "all") {
-            DisplayPokemons(pokemons);
-        }
-        else {
-            DisplayPokemons(pokemonCategory);
-        }
+    //     console.log(pokemonCategory);
+    //     if (category === "all") {
+    //         DisplayPokemons(pokemons);
+    //     }
+    //     else {
+    //         DisplayPokemons(pokemonCategory);
+    //     }
     });
 });
 
-function DisplayPokemons() {
+function DisplayPokemons(pokemons) {
     let displayPokemon = pokemons.map(function (characteristic){
         // join them in one string 
         return `    
         <article id="pokemon">
             <img src="" alt="">
             <h2 class="name">${characteristic.name}</h2>
+            <img class="img" src=${characteristic.pic} class="photo"/>
             <h4 class="category">${characteristic.category}</h4>
             <h4 class="height">${characteristic.height}</h4>
             <h4 class="weight">${characteristic.weight}</h4>
@@ -68,7 +81,7 @@ function DisplayPokemons() {
             <p class="description">
             ${characteristic.description}
             </p>
-            </article>`;
+        </article>`;
 });
         
     displayPokemon = displayPokemon.join("");
