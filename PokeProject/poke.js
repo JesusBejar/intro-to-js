@@ -35,37 +35,32 @@ window.addEventListener("DOMContentLoaded", function(){
     // the map method creates a new array populated with the results
     // of calling a provided functionon every element in the calling array
     DisplayPokemons(pokemons);
+    FilterPokemons(pokemons);
 
 });
 let filteredpokemons = [];
 
-filterButtons.forEach(function (button) {
-    button.addEventListener("click", function (e){
-        // console.log(e.currentTarget.dataset.id);
-        filteredpokemons = [];
-        let category = e.currentTarget.dataset.id;
-        let pokemonCategory = pokemons.filter( (pokemon) => {
-            // console.log(pokemon.category)
-            // console.log(category)
-            if (pokemon.category === category){
-                filteredpokemons.push(pokemon);
+function FilterPokemons () {
+    filterButtons.forEach(function (button) {
+        button.addEventListener("click", function (e){
+            // console.log(e.currentTarget.dataset.id);
+            filteredpokemons = [];
+            let category = e.currentTarget.dataset.id;
+            let pokemonCategory = pokemons.filter( (pokemon) => {
+                // console.log(pokemon.category)
+                // console.log(category)
+                if (pokemon.category === category){
+                    filteredpokemons.push(pokemon);
+                    }
+                else if (category === "All"){
+                    filteredpokemons.push(pokemon);
                 }
-            else if (category === "All"){
-                filteredpokemons.push(pokemon);
-            }
-
-        DisplayPokemons(filteredpokemons);
-    });
-    //     console.log(pokemonCategory);
-    //     if (category === "all") {
-    //         DisplayPokemons(pokemons);
-    //     }
-    //     else {
-    //         DisplayPokemons(pokemonCategory);
-    //     }
+    
+            DisplayPokemons(filteredpokemons);
+        });
     });
 });
-
+}
 function DisplayPokemons(pokemons) {
     let displayPokemon = pokemons.map(function (characteristic){
         // join them in one string 
