@@ -8,72 +8,85 @@ const nameVariable = "Jesus Bejar";
 
 // Step 2: place the value of the name variable into the HTML file (hint: document.querySelector())
 
-document.querySelector("#name").innerHTML = nameVariable;
+let name = document.querySelector("#name").innerHTML = nameVariable;
 
 // Step 3: declare and instantiate a variable to hold the current year
 
-const currentYear = 2023
+const currentYear = 2023;
 
 // Step 4: place the value of the current year variable into the HTML file
 
 document.querySelector("#year").innerHTML = currentYear;
 
 // Step 5: declare and instantiate a variable to hold the name of your picture
-
-const guapoPic = document.createElement("img");
+let guapoPic = "images/MePic.JPG"; 
+console.log(guapoPic)
 
 // Step 6: copy your image into the "images" folder
 
 // Step 7: place the value of the picture variable into the HTML file (hint: document.querySelector().setAttribute())
 
-guapoPic.setAttribute("src", "https://placeimg.com/200/200/animals");
-guapoPic.setAttribute("alt", "guapo");
-document.body.appendChild(guapoPic);
+let img = document.querySelector("#photo");
+img.setAttribute("src", guapoPic);
+console.log(img)
 
 /* ARRAYS */
 
 // Step 1: declare and instantiate an array variable to hold your favorite foods
 
-// const foods = ["tacos", "tofu", "pistachios"];
+let favfoods = ["tacos", "tofu", "pistachios"];
+console.log(favfoods)
 
 // Step 2: place the values of the favorite foods variable into the HTML file
-const foods = document.createElement("food")
-foods.innerText = ["tacos", "tofu", "pistachios"];
-document.body.appendChild(foods);
+let foods = document.querySelector("#foods");
 
-document.querySelector("#food").textContent = foods
-document.querySelector("#food").textContent = food1, food2, food3;
-document.querySelector("#food").textContent = "tacos, tofu, pistachios";
+favfoods.forEach(foodName => {
+    let p = document.createElement("p")
+    p.textContent = foodName
+    foods.append(p)
+});
 
 // Step 3: declare and instantiate a variable to hold another favorite food
 
-const anotherFood = "beans";
+let anotherFood = "beans";
 
 // Step 4: add the variable holding another favorite food to the favorite food array
 
-foods.push(anotherFood);
+favfoods.push(anotherFood);
 
 // Step 5: repeat Step 2
-
-document.querySelector("#food").textContent = foods;
+foods.innerHTML = "" ;
+favfoods.forEach(foodName => {
+    let p = document.createElement("p")
+    p.textContent = foodName
+    foods.append(p)
+});
 
 // Step 6: remove the first element in the favorite foods array
 
 // shift method removes first element of an array and rearanges the array
-foods.shift();
+favfoods.shift();
 
 // Step 7: repeat Step 2
-
-document.querySelector("#food").textContent = foods;
+foods.innerHTML = "" ;
+favfoods.forEach(foodName => {
+    let p = document.createElement("p")
+    p.textContent = foodName
+    foods.append(p)
+});
 
 // Step 8: remove the last element in the favorite foods array
 
 // pop method removes last element of an array and rearanges the array
-foods.pop();
+favfoods.pop();
 
 // Step 7: repeat Step 2
-
-document.querySelector("#food").textContent = foods;
+foods.innerHTML = "" ;
+favfoods.forEach(foodName => {
+    let p = document.createElement("p")
+    p.textContent = foodName
+    foods.append(p)
+});
 
 
 

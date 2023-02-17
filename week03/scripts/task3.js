@@ -43,18 +43,57 @@ button.addEventListener("click", addNumbers);
 // Step 6: Using function expressions, repeat Steps 1-5 with new functions named subtract 
 // and subtractNumbers and HTML form controls with IDs of minuend, subtrahend, 
 // difference and subtractNumbers
-function subtact (number1, number2) {
+function subtract (number1, number2) {
     return number1 - number2
 }
 
 function subtractNumbers () {
-
+        var minuend = document.querySelector("#minuend").value;
+        var subtrahend = document.querySelector("#subtrahend").value;
+        // Number (attributes); turns strings into ints
+        let result = subtract(Number(minuend), Number(subtrahend));
+        document.querySelector("#difference").value = result;
+        console.log(result);
+        return result
 }
+let button2 = document.querySelector("#subtractNumbers");
+
+button2.addEventListener("click", subtractNumbers);
 
 // Step 7: Using arrow functions, repeat Steps 1-5 with new functions named multiply and mulitplyNumbers and HTML form controls with IDs of factor1, factor2, product and multiplyNumbers
+function multiply (number1, number2) {
+    return number1 * number2
+}
 
+const multiplyNumbers = () => {
+    var factor1 = document.querySelector("#factor1").value;
+    var factor2 = document.querySelector("#factor2").value;
+    // Number (attributes); turns strings into ints
+    let result = multiply(Number(factor1), Number(factor2));
+    document.querySelector("#product").value = result;
+    console.log(result);
+    return result
+}
+let button3 = document.querySelector("#multiplyNumbers");
+
+button3.addEventListener("click", multiplyNumbers);
 
 // Step 8: Using any of the three function declaration types, repeat Steps 1-5 with new functions named divide and divideNumbers and HTML form controls with IDs of dividend, divisor, quotient and divideNumbers
+function divide (number1, number2) {
+    return number1 / number2
+}
+const divideNumbers = () => {
+    var dividend = document.querySelector("#dividend").value;
+    var divisor = document.querySelector("#divisor").value;
+    // Number (attributes); turns strings into ints
+    let result = divide(Number(dividend), Number(divisor));
+    document.querySelector("#quotient").value = result;
+    console.log(result);
+    return result
+}
+let button4 = document.querySelector("#divideNumbers");
+
+button4.addEventListener("click", divideNumbers);
 
 // Step 9: Test all of the mathematical functionality of the task3.html page.
 
